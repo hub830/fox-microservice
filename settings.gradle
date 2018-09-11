@@ -1,0 +1,4 @@
+rootProject.name = 'fox-microservice'
+
+include 'fox-microservice-account'
+include 'fox-microservice-core'
