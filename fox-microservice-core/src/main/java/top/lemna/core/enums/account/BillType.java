@@ -7,7 +7,7 @@ import java.util.Map;
 import com.google.common.collect.ImmutableMap;
 
 public enum BillType {
-	RECHARGE("充�??"), //
+	RECHARGE("充值"), //
 	WITHDRAW_CASH("提现"), //
 	PAYMENT("交易"), //
 	;//

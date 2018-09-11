@@ -1,16 +1,15 @@
-allprojects
-{
-	repositories
-	{  mavenCentral() }
+allprojects {
+	repositories {
+		maven { url "http://192.168.10.10:8081/nexus/content/groups/public/" }
+		mavenCentral()
+	}
 }
 
 group = 'fox-security'
 version = '0.0.1-SNAPSHOT'
 
-subprojects
-{
-	buildscript
-	{
+subprojects {
+	buildscript {
 		ext { springBootVersion = '2.0.3.RELEASE' }
 		repositories { mavenCentral() }
 		dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") }
@@ -22,16 +21,13 @@ subprojects
 	sourceCompatibility = 1.8
 	targetCompatibility = 1.8
 
-	ext
-	{
+	ext {
 		springCloudVersion = 'Finchley.RELEASE'
 		env = System.getProperty("env")?:"dev"
 	}
 
-	sourceSets
-	{
-		main
-		{
+	sourceSets {
+		main {
 			//
 			resources {
 				srcDirs = ["src/main/resources/public", "src/main/resources/$env"]

@@ -1,14 +1,25 @@
-
+plugins { id "com.ewerk.gradle.plugins.querydsl" version "1.0.10" }
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 dependencies {
 	//compile project(':fox-security-core')
 	//compile('org.springframework.cloud:spring-cloud-starter-oauth2')
-	testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile "org.springframework.boot:spring-boot-starter-data-jpa"
+	runtime 'mysql:mysql-connector-java:8.0.8-dmr'
+	compile('top.lemna:fox-microservice-core:0.0.3-SNAPSHOT')
 	testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+	
+	compile group: 'com.querydsl', name: 'querydsl-jpa', version: '4.2.1'
+	compile group: 'com.querydsl', name: 'querydsl-apt', version: '4.2.1'
+	
 }
-
+//querydsl 配置
+querydsl {
+	querydslDefault = true
+	jpa = true //
+}
 
 //spring boot
 dependencyManagement {

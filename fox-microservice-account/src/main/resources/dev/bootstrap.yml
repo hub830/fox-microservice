@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: hops-microservice-pay
+  profiles:
+#    active: db

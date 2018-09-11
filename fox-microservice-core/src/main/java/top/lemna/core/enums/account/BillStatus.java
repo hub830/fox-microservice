@@ -7,7 +7,7 @@ import java.util.Map;
 import com.google.common.collect.ImmutableMap;
 
 public enum BillStatus {
-	PAYMENT("待处�?"), //
+	PAYMENT("待处理"), //
 	SUCCESS("成功"), //
 	REFUND("失败")//
 	;//
