@@ -9,12 +9,12 @@ public class RecordNotExistException extends RuntimeException {
   private String recordId;
 
   public RecordNotExistException(Long id) {
-    super(MessageFormat.format("数据库中不存在ID为[{0}]的记�?", id));
+    super(MessageFormat.format("数据库中不存在ID为[{0}]的记录", id));
     recordId = id.toString();
   }
 
   public RecordNotExistException(BigInteger id) {
-    super(MessageFormat.format("数据库中不存在ID为[{0}]的记�?", id));
+    super(MessageFormat.format("数据库中不存在ID为[{0}]的记录", id));
     recordId = id.toString();
   }
 

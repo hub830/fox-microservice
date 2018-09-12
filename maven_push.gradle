@@ -52,4 +52,13 @@ afterEvaluate { project ->
 		}
 	}
 
+	// 生成sources.jar
+	task sourcesJar(type: Jar) {
+		classifier = 'sources'
+		from sourceSets.main.allSource
+	}
+
+	// 产生相关配置文件的任务
+	artifacts { archives sourcesJar }
+
 }

@@ -53,4 +53,8 @@ subprojects {
 		testCompile group: 'junit', name: 'junit', version: '4.12'
 		compile 'com.alibaba:fastjson:1.2.47'
 	}
+	configurations.all {
+		// check for updates every build
+		resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+	}
 }

@@ -7,8 +7,8 @@ import java.util.Map;
 import com.google.common.collect.ImmutableMap;
 
 public enum YesNo {
-	YES("�?"), // 初使状�??
-	NO("�?")// 完成
+	YES("是"), //
+	NO("否")//
 	;
 
 	private String name;

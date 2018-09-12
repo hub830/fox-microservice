@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
 @Target({ ElementType.ANNOTATION_TYPE, ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Amount {
-	String message() default "错误的金�?";
+	String message() default "错误的金额";
 
 	Class<?>[] groups() default {};
 
