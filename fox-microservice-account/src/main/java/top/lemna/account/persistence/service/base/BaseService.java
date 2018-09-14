@@ -10,6 +10,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.baidu.fsg.uid.UidGenerator;
+
 import top.lemna.account.persistence.entity.base.IdEntity;
 import top.lemna.account.persistence.repository.base.BaseRepository;
 import top.lemna.core.persistence.exception.RecordNotExistException;
@@ -18,8 +20,8 @@ public abstract class BaseService<T extends IdEntity> {
 	@Autowired
 	private BaseRepository<T, Long> repository;
 
-	// @Autowired
-	// private UidFeignClient uidFeignClient;
+	@Autowired
+	UidGenerator uidGenerator;
 
 	public void delete(Long id) {
 		repository.deleteById(id);
@@ -65,9 +67,8 @@ public abstract class BaseService<T extends IdEntity> {
 	@Transactional
 	public T save(T entity) {
 		if (entity.getId() == null) {
-			// TODO
-			// Long uid = uidFeignClient.getUid();
-			// entity.setId(uid);
+			 Long uid = uidGenerator.getUID();
+			 entity.setId(uid);
 		}
 		entity.setUpdatetime(new Date());
 		return repository.save(entity);

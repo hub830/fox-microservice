@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
 import top.lemna.account.persistence.entity.base.IdEntity;
 
 /**
- * 账户表
+ * 订单表
  * 
  * @author toyota
  *

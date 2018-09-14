@@ -1,0 +1,35 @@
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+configurations.all {
+	// check for updates every build
+	resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
+
+dependencies {
+
+	//	compile project(':fox-microservice-uid-generator')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile "org.springframework.boot:spring-boot-starter-data-jpa"
+	compile('top.lemna:fox-microservice-core:0.0.5-SNAPSHOT')
+	compile('top.lemna:fox-microservice-uid-generator:0.0.9-SNAPSHOT')
+	testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+
+	compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+
+}
+
+
+//spring boot
+dependencyManagement {
+	//
+	imports { //
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}" //
+	}//
+	
+	resolutionStrategy {
+		cacheDynamicVersionsFor 0, 'seconds'
+		cacheChangingModulesFor 0, 'seconds'
+	}
+}
