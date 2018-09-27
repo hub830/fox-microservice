@@ -1,15 +1,10 @@
 package top.lemna.user.web.controller;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import lombok.extern.slf4j.Slf4j;
 import top.lemna.user.persistence.service.UserService;
-import top.lemna.user.web.command.UserRegisterCommand;
 
 /**
  * 账户控制类
@@ -25,7 +20,7 @@ public class AddressController {
 	@Autowired
 	private UserService userService;
 
-	@PostMapping(path = "place")
+/*	@PostMapping(path = "place")
 	public void place(@Valid UserRegisterCommand command) {
 		log.debug("下单 command:{}", command);
 	}
@@ -43,6 +38,6 @@ public class AddressController {
 	@PostMapping(path = "receipt")
 	public void receipt(@Valid UserRegisterCommand command) {
 		log.debug("收货 command:{}", command);
-	}
+	}*/
 
 }

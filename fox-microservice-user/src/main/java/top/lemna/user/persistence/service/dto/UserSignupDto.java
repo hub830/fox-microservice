@@ -12,11 +12,18 @@ import lombok.Data;
 @Data
 public class UserSignupDto {
 
-	// 用户名称
-	private String username;
-	// 用户呢称
-	private String nickname;
-	// 密码
-	private String password;
+  // 用户名称
+  private String username;
+  // 用户呢称
+  private String nickname;
+  // 密码
+  private String password;
+
+  public UserSignupDto(String username, String nickname, String password) {
+    super();
+    this.username = username;
+    this.nickname = nickname;
+    this.password = password;
+  }
 
 }

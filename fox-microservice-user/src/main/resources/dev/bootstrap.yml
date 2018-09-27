@@ -1,5 +1,5 @@
 spring:
   application:
-    name: hops-microservice-pay
+    name: hops-microservice-user
   profiles:
 #    active: db

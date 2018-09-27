@@ -3,25 +3,23 @@ apply from: '../maven_push.gradle'
 
 archivesBaseName = 'fox-microservice-uid-generator'
 
-jar
-{
-	baseName = archivesBaseName
-	version =  VERSION_NAME
+jar {
+  baseName = archivesBaseName
+  version =  VERSION_NAME
 }
 
-dependencies
-{
-//	compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.0.3.RELEASE'
-	
-	testCompile group: 'org.springframework', name: 'spring-test', version: '5.0.7.RELEASE'
-	compile group: 'org.springframework', name: 'spring-tx', version: '5.0.7.RELEASE'
-	compile group: 'org.springframework', name: 'spring-context', version: '5.0.7.RELEASE'
-	compile group: 'org.springframework.boot', name: 'spring-boot', version: '2.0.3.RELEASE'
-	
+dependencies {
 
-	compile 'commons-collections:commons-collections:3.2.2'
-	compile 'org.apache.zookeeper:zookeeper:3.4.13'
-	compile 'org.apache.curator:curator-framework:4.0.1'
+  testCompile group: 'org.springframework', name: 'spring-test', version: '5.0.7.RELEASE'
+  compile group: 'org.springframework', name: 'spring-tx', version: '5.0.7.RELEASE'
+  compile group: 'org.springframework', name: 'spring-context', version: '5.0.7.RELEASE'
+  compile group: 'org.springframework.boot', name: 'spring-boot', version: '2.0.3.RELEASE'
+  compile group: 'org.hibernate', name: 'hibernate-core', version: '5.0.12.Final'
+
+
+  compile 'commons-collections:commons-collections:3.2.2'
+  compile 'org.apache.zookeeper:zookeeper:3.4.13'
+  compile 'org.apache.curator:curator-framework:4.0.1'
 }
 
 

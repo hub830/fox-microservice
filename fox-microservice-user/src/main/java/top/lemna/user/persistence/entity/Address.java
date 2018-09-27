@@ -1,11 +1,7 @@
 package top.lemna.user.persistence.entity;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import top.lemna.user.persistence.entity.base.TimeDocument;
 
 /**
  * 订单
@@ -15,6 +11,7 @@ import top.lemna.user.persistence.entity.base.TimeDocument;
  */
 @Data
 public class Address {
+  
 	@Id
 	private Long id;
 	// 固定电话

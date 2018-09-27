@@ -1,10 +1,9 @@
 package top.lemna.user.persistence.service.base;
 
+import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.MongoRepository;
-
 import com.baidu.fsg.uid.UidGenerator;
 
 public abstract class BaseService<T extends Object>
@@ -45,4 +44,13 @@ public abstract class BaseService<T extends Object>
         return repository.findById(id);
     }
 
+    public T insert( T entity )
+    {
+      return repository.insert(entity);
+    }
+
+    public List<T> insert( Iterable<T> entities )
+    {
+      return repository.insert(entities);
+    }
 }

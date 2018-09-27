@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import top.lemna.user.persistence.entity.base.TimeDocument;
 
 /**
  * 订单
@@ -14,9 +16,10 @@ import lombok.Data;
  */
 @Data
 @Document
-public class AddressBook {
+@EqualsAndHashCode(callSuper=false)
+public class AddressBook extends TimeDocument{
 	// 用户编号
-	private Long userNo;
+	private Long userId;
 	
 	//地址本条数
 	private int count;
