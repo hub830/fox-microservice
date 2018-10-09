@@ -1,9 +1,11 @@
 package top.lemna.user.persistence.service;
 
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.baidu.fsg.uid.UidGenerator;
+import lombok.RequiredArgsConstructor;
 import top.lemna.user.persistence.entity.User;
 import top.lemna.user.persistence.repository.UserRepository;
 import top.lemna.user.persistence.service.base.BaseService;
@@ -16,27 +18,30 @@ import top.lemna.user.persistence.service.dto.UserSignupDto;
  * 
  */
 @Service
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class UserService extends BaseService<User> {
 
-  @Autowired
-  private UserRepository repository;
+  private final UserRepository repository;
 
-  @Autowired
-  UidGenerator uidGenerator;
+  private final UidGenerator uidGenerator;
 
-  @Autowired
-  private PasswordEncoder passwordEncoder;
+  private final PasswordEncoder passwordEncoder;
 
 
-  public UserService() {
-    super();
+  public Optional<User> findByUsername(String username) {
+    return repository.findByUsername(username);
+  }
+
+
+  public Optional<User> findByUserNo(String userNo) {
+    return repository.findByUserNo(userNo);
   }
 
   public User signup(UserSignupDto dto) {
     long userNo = uidGenerator.getUID();
     String password = passwordEncoder.encode(dto.getPassword());
     User user = new User(userNo, dto.getUsername(), dto.getNickname(), password);
-    return insert(user);
+    return save(user);
   }
 
 }

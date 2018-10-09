@@ -1,6 +1,5 @@
 package top.lemna.user.persistence.entity;
 
-import org.springframework.data.annotation.Id;
 import lombok.Data;
 
 /**
@@ -12,7 +11,6 @@ import lombok.Data;
 @Data
 public class Address {
   
-	@Id
 	private Long id;
 	// 固定电话
 	private String telephone;
