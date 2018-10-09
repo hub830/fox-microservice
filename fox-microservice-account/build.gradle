@@ -3,31 +3,34 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 dependencies {
-	
-//	compile project(':fox-microservice-uid-generator')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile "org.springframework.boot:spring-boot-starter-data-jpa"
-//	runtime 'mysql:mysql-connector-java:8.0.8-dmr'
-	compile 'mysql:mysql-connector-java:8.0.8-dmr'
-	compile('top.lemna:fox-microservice-core:0.0.4-SNAPSHOT')
-	compile('top.lemna:fox-microservice-uid-generator:0.0.9-SNAPSHOT')
-	testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
-	testCompile( 'org.hsqldb:hsqldb:2.4.0')
 
-	compile group: 'com.querydsl', name: 'querydsl-jpa', version: '4.2.1'
-	compile group: 'com.querydsl', name: 'querydsl-apt', version: '4.2.1'
+  compile('top.lemna:fox-security-oauth-resource:0.0.3-SNAPSHOT')
+  compile('top.lemna:fox-microservice-uid-generator:0.0.12-SNAPSHOT') {
+    exclude group: 'org.slf4j'
+    exclude group: 'log4j'
+  }
+  compile('org.springframework.boot:spring-boot-starter-web')
+  compile "org.springframework.boot:spring-boot-starter-data-jpa"
+  //	runtime 'mysql:mysql-connector-java:8.0.8-dmr'
+  compile 'mysql:mysql-connector-java:8.0.8-dmr'
+  compile('top.lemna:fox-microservice-core:0.0.4-SNAPSHOT')
+  testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+  testCompile( 'org.hsqldb:hsqldb:2.4.0')
+
+  compile group: 'com.querydsl', name: 'querydsl-jpa', version: '4.2.1'
+  compile group: 'com.querydsl', name: 'querydsl-apt', version: '4.2.1'
 
 }
 //querydsl 配置
 querydsl {
-	querydslDefault = true
-	jpa = true //
+  querydslDefault = true
+  jpa = true //
 }
 
 //spring boot
 dependencyManagement {
-	//
-	imports { //
-		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}" //
-	}//
+  //
+  imports { //
+    mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}" //
+  }//
 }

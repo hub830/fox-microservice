@@ -24,7 +24,6 @@ import top.lemna.core.enums.account.RechargerType;
 @Service
 public class RechargService extends BaseService<Recharg> {
 
-  @SuppressWarnings("unused")
   @Autowired
   private RechargRepository repository;
 

@@ -21,7 +21,7 @@ import top.lemna.user.persistence.service.UserService;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CustomUserDetailsService implements UserDetailsService {
 
-  private UserService userService;
+  private final UserService userService;
 
 
   @Override
@@ -31,7 +31,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     top.lemna.user.persistence.entity.User user = optional
         .orElseThrow(() -> new UsernameNotFoundException("User " + username + " not found."));
 
-    return new User(user.getUsername(), user.getPassword(), true, true, true, user.isLocked(),
+    return new User(user.getUsername(), user.getPassword(), true, true, true, !user.isLocked(),
         getAuthorities(user.getRoles()));
   }
 
