@@ -5,7 +5,10 @@ apply plugin: 'io.spring.dependency-management'
 dependencies {
 
   compile('top.lemna:fox-security-oauth-authorization:0.0.12-SNAPSHOT')
-  compile('top.lemna:fox-microservice-uid-generator:0.0.9-SNAPSHOT')
+  compile('top.lemna:fox-microservice-uid-generator:0.0.12-SNAPSHOT') {
+    exclude group: 'org.slf4j'
+    exclude group: 'log4j'
+  }
   compile('top.lemna:fox-microservice-core:0.0.5-SNAPSHOT')
   compile('org.springframework.boot:spring-boot-starter-web')
   compile("org.springframework.boot:spring-boot-starter-data-mongodb")
