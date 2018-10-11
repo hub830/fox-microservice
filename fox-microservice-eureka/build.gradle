@@ -2,6 +2,15 @@ apply plugin: 'com.palantir.docker'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
+version =  '0.1.0-SNAPSHOT'
+archivesBaseName = 'eureka-server'
+
+jar {
+  baseName = archivesBaseName
+  version =  project.version
+}
+
+
 dependencies
 {
     compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
