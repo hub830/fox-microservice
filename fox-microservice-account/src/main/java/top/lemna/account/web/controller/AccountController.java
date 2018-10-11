@@ -32,15 +32,6 @@ public class AccountController {
   AccountService service;
 
 
-/*
-  @GetMapping
-  public Page<Account> get(@QuerydslPredicate(root = Account.class) Predicate predicate,
-      Pageable pageable, @RequestParam MultiValueMap<String, String> parameters) {
-    log.debug("查询账户 parameters:{}", parameters);
-    Page<Account> page = service.findAll(predicate, pageable);
-    return page;
-  }*/
-
   @GetMapping("{id}")
   public Account get(@PathVariable Long id) {
     log.debug("查询账户 id:{}", id);

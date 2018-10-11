@@ -1,7 +1,9 @@
 rootProject.name = 'fox-microservice'
 
 include 'fox-microservice-account'
+include 'fox-microservice-account-api'
 include 'fox-microservice-core'
 include 'fox-microservice-uid-generator'
 include 'fox-microservice-order'
 include 'fox-microservice-user'
+include 'fox-microservice-eureka'
