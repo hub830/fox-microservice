@@ -1,0 +1,15 @@
+apply from: '../maven_push.gradle'
+
+archivesBaseName = 'fox-microservice-api'
+
+jar {
+  baseName = archivesBaseName
+  version =  VERSION_NAME
+}
+
+dependencies {
+  compile('top.lemna:fox-microservice-core:0.0.5-SNAPSHOT')
+  compile ('org.projectlombok:lombok:1.16.18')
+//  compile group: 'org.springframework', name: 'spring-web', version: '5.1.0.RELEASE'
+}
+

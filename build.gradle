@@ -5,7 +5,7 @@ allprojects {
   }
 }
 
-group = 'fox-security'
+group = 'fox-microservice'
 version = '0.0.1-SNAPSHOT'
 
 subprojects {
@@ -25,7 +25,7 @@ configure(subprojects.findAll {!it.name.endsWith('-api')}) {
 
 
   buildscript {
-    ext { springBootVersion = '2.0.3.RELEASE' }
+    ext { springBootVersion = '2.0.6.RELEASE' }
     repositories {
       mavenCentral()
       maven { url "https://plugins.gradle.org/m2/" }
@@ -36,7 +36,8 @@ configure(subprojects.findAll {!it.name.endsWith('-api')}) {
     }
   }
   ext {
-    springCloudVersion = 'Finchley.RELEASE'
+    //    springCloudVersion = 'Finchley.RELEASE'
+    springCloudVersion = 'Finchley.SR2'
     env = System.getProperty("env")?:"dev"
   }
 
