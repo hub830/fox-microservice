@@ -1,0 +1,35 @@
+plugins { id "com.ewerk.gradle.plugins.querydsl" version "1.0.10" }
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+dependencies {
+  runtime('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+  compile('org.springframework.boot:spring-boot-starter-web')
+  compile('top.lemna:fox-microservice-core:0.0.6-SNAPSHOT')
+  compile('top.lemna:fox-security-oauth-resource:0.0.5-SNAPSHOT')
+  compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+  compile('top.lemna:fox-microservice-uid-generator:0.0.12-SNAPSHOT') {
+    exclude group: 'org.slf4j'
+    exclude group: 'log4j'
+  }
+  compile group: 'com.querydsl', name: 'querydsl-mongodb', version: '4.2.1'
+  compile group: 'com.querydsl', name: 'querydsl-apt', version: '4.2.1'
+  testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+}
+
+//querydsl 配置
+querydsl {
+  querydslDefault = true
+  springDataMongo = true//
+}
+//spring boot
+dependencyManagement {
+  //
+  imports { //
+    mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}" //
+  }//
+  resolutionStrategy {
+    cacheDynamicVersionsFor 0, 'seconds'
+    cacheChangingModulesFor 0, 'seconds'
+  }
+}

@@ -16,5 +16,5 @@ public class OrderPaymentItem {
 	// 支付金额
 	private double amount;
 	// 外部支付订单号
-	private String paygOrderNo;
+	private String payOrderId;
 }

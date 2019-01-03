@@ -15,6 +15,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import lombok.extern.slf4j.Slf4j;
 import top.lemna.user.persistence.entity.Role;
 import top.lemna.user.persistence.entity.User;
+import top.lemna.user.persistence.service.RoleService;
+import top.lemna.user.persistence.service.UserService;
 import top.lemna.user.persistence.service.dto.UserSignupDto;
 
 @Slf4j
@@ -40,7 +42,7 @@ public class UserServiceTest {
   public void testSignup() {
     User user = userService.signup(dto);
 
-    assertThat(user.getUserNo(), notNullValue());
+    assertThat(user.getId(), notNullValue());
   }
 
 

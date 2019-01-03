@@ -12,6 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import top.lemna.user.persistence.entity.Privilege;
 import top.lemna.user.persistence.entity.Role;
+import top.lemna.user.persistence.service.PrivilegeService;
+import top.lemna.user.persistence.service.RoleService;
 
 
 @RunWith(SpringRunner.class)

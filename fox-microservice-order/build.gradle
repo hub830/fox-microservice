@@ -1,24 +1,22 @@
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-/*configurations.all {
-  // check for updates every build
-  resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
-}*/
-
-
 dependencies {
   //	compile project(':fox-microservice-uid-generator')
   compile('org.springframework.boot:spring-boot-starter-web')
   compile "org.springframework.boot:spring-boot-starter-data-jpa"
+  compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+  implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+  implementation('org.springframework.cloud:spring-cloud-starter-openfeign')
   compile('top.lemna:fox-microservice-core:0.0.5-SNAPSHOT')
   compile('top.lemna:fox-microservice-uid-generator:0.0.12-SNAPSHOT') {
     exclude group: 'org.slf4j'
     exclude group: 'log4j'
   }
+  compile('top.lemna:fox-microservice-api:0.0.1-SNAPSHOT')
+
   testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
 
-  compile("org.springframework.boot:spring-boot-starter-data-mongodb")
 
 }
 
@@ -28,7 +26,6 @@ dependencyManagement {
   imports { //
     mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}" //
   }//
-
   resolutionStrategy {
     cacheDynamicVersionsFor 0, 'seconds'
     cacheChangingModulesFor 0, 'seconds'

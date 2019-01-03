@@ -14,7 +14,7 @@ public class OrderItem {
 	//商品名称
 	private String productName;
 	//商品编号 
-	private String productNo;
+	private String productId;
 	//商品规格 
 	private String productSpec;
 	//单价

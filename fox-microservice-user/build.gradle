@@ -4,15 +4,18 @@ apply plugin: 'io.spring.dependency-management'
 
 dependencies {
 
-  compile('top.lemna:fox-security-oauth-authorization:0.0.12-SNAPSHOT')
+  compile('top.lemna:fox-security-oauth-authorization:0.0.16-SNAPSHOT')
   compile('top.lemna:fox-microservice-uid-generator:0.0.12-SNAPSHOT') {
     exclude group: 'org.slf4j'
     exclude group: 'log4j'
   }
-  compile('top.lemna:fox-microservice-core:0.0.5-SNAPSHOT')
+  compile('top.lemna:fox-microservice-core:0.0.6-SNAPSHOT')
+  compile('top.lemna:fox-microservice-api:0.0.1-SNAPSHOT')
   compile('org.springframework.boot:spring-boot-starter-web')
   compile("org.springframework.boot:spring-boot-starter-data-mongodb")
-  compile('org.springframework.boot:spring-boot-starter-data-redis')
+  implementation('org.springframework.boot:spring-boot-starter-data-redis')
+  implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+  implementation('org.springframework.cloud:spring-cloud-starter-openfeign')
   testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
 }
 

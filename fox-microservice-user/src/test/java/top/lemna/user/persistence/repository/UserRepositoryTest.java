@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import top.lemna.user.persistence.entity.User;
+import top.lemna.user.persistence.repository.UserRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

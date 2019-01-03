@@ -8,6 +8,11 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import top.lemna.user.persistence.entity.base.AbstractDocument;
 
+/**
+ * 角色
+ * @author mux
+ *
+ */
 @Data
 @Document
 @EqualsAndHashCode(callSuper = true)

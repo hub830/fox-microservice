@@ -1,7 +1,6 @@
 package top.lemna.order.persistence.entity;
 
 import java.util.Date;
-
 import lombok.Data;
 import top.lemna.core.enums.order.DeliveryMethod;
 

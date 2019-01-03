@@ -3,42 +3,43 @@ package top.lemna.user.persistence.entity;
 import lombok.Data;
 
 /**
- * 订单
+ * 地址
  * 
  * @author toyota
  *
  */
 @Data
 public class Address {
-  
-	private Long id;
-	// 固定电话
-	private String telephone;
 
-	// 手机号
-	private String mobilePhone;
+  // 地址编号
+  private Long addressNo;
+  // 固定电话
+  private String telephone;
 
-	// 省
-	private String province;
+  // 手机号
+  private String mobilePhone;
 
-	// 市、县
-	private String city;
+  // 省
+  private String province;
 
-	// 区、镇
-	private String district;
+  // 市、县
+  private String city;
 
-	// 所在地区
-	private String area;
+  // 区、镇
+  private String district;
 
-	// 地址
-	private String address;
+  // 所在地区
+  private String area;
 
-	// 邮编
-	private int zipcode;
+  // 地址
+  private String address;
 
-	// 收件人
-	private String linkman;
+  // 邮编
+  private int zipcode;
 
-	// 邮箱
-	private String email;
+  // 收件人
+  private String linkman;
+
+  // 邮箱
+  private String email;
 }
