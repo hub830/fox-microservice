@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.baidu.fsg.uid.UidGenerator;
 import lombok.RequiredArgsConstructor;
 import top.lemna.api.account.model.Account;
 import top.lemna.user.client.account.AccountClient;
@@ -16,7 +15,7 @@ import top.lemna.user.persistence.service.base.BaseService;
 import top.lemna.user.persistence.service.dto.UserSignupDto;
 
 /**
- * 订单管理.
+ * 用户管理.
  * 
  * @author hu
  * 
@@ -27,8 +26,6 @@ public class UserService extends BaseService<User> {
 
   private final UserRepository repository;
 
-  private final UidGenerator uidGenerator;
-
   private final PasswordEncoder passwordEncoder;
 
   private final AccountClient accountClient;
@@ -37,23 +34,17 @@ public class UserService extends BaseService<User> {
     return repository.findByUsername(username);
   }
 
-
-  public Optional<User> findByUserNo(String userNo) {
-    return repository.findByUserNo(userNo);
-  }
-
   @Transactional
   public User signup(UserSignupDto dto) {
 
-    long userNo = uidGenerator.getUID();
     Account account = new Account();
     account.setAccountName(dto.getUsername());
     account = accountClient.post(account);
     UserInfo userInfo = new UserInfo();
     userInfo.setAccountId(account.getId());
     String password = passwordEncoder.encode(dto.getPassword());
-    User user = new User(userNo, dto.getUsername(), dto.getNickname(), password);
-    user.setUserInfo(userInfo);
+    User user = new User(dto.getUsername(), password);
+    // user.setUserInfo(userInfo);
     return save(user);
   }
 

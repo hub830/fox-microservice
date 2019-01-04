@@ -1,14 +1,20 @@
 package top.lemna.user.persistence.entity;
 
 import java.util.Date;
-import java.util.List;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Index;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import top.lemna.user.persistence.entity.base.AbstractDocument;
+import top.lemna.user.persistence.entity.base.IdEntity;
 
 /**
  * 用户
@@ -17,38 +23,57 @@ import top.lemna.user.persistence.entity.base.AbstractDocument;
  *
  */
 @Data
+@Entity
 @ToString
-@Document
 @EqualsAndHashCode(callSuper = false)
-public class User extends AbstractDocument {
-  // 用户编号
-  @Indexed(unique = true)
-  private Long userNo;
-  // 用户名称
-  @Indexed(unique = true)
+@Table(indexes = {//
+    @Index(name = "i_user_username", columnList = "username", unique = true)//
+})
+public class User extends IdEntity {
+
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * 用户名称
+   */
+  @Column(columnDefinition = "varchar(64) NOT NULL COMMENT '用户名称'")
   private String username;
-  // 密码
+
+  /**
+   * 密码
+   */
+  @Column(columnDefinition = "varchar(64) NOT NULL COMMENT '密码'")
   private String password;
-  // 是否锁定 锁定用户无法登录
+
+  /**
+   * 是否锁定 锁定用户无法登录
+   */
+  @Column(columnDefinition = "int(1) NOT NULL COMMENT '是否锁定'")
   private boolean locked;
-  //最后更改密码的时间
+
+  /**
+   * 最后更改密码的时间
+   */
+  @Temporal(TemporalType.TIMESTAMP)
   private Date lastUpdatePasswordTime;
-  // 角色
-  @DBRef
-  private List<Role> roles;
-  // 用户扩展信息
+
+  /**
+   * 角色
+   */
+  @ManyToMany(fetch = FetchType.LAZY)
+  private Set<Role> roles;
+
+  @OneToOne(mappedBy = "user")
   private UserInfo userInfo;
 
   /**
    * 
    * @param userNo
    * @param username
-   * @param nickname
    * @param password
    */
-  public User(Long userNo, String username, String nickname, String password) {
+  public User(String username, String password) {
     super();
-    this.userNo = userNo;
     this.username = username;
     this.password = password;
     this.lastUpdatePasswordTime = new Date();

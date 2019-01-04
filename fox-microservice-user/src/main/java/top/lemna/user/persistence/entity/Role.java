@@ -1,30 +1,48 @@
 package top.lemna.user.persistence.entity;
 
-import java.util.List;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Index;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import top.lemna.user.persistence.entity.base.AbstractDocument;
+import top.lemna.user.persistence.entity.base.IdEntity;
 
 /**
  * 角色
+ * 
  * @author mux
  *
  */
 @Data
-@Document
+@Entity
 @EqualsAndHashCode(callSuper = true)
-public class Role extends AbstractDocument {
+@Table(indexes = {//
+    @Index(name = "i_role_name", columnList = "name", unique = true)//
+})
+public class Role extends IdEntity {
+  private static final long serialVersionUID = 1L;
 
-  @Indexed(unique = true)
+  /**
+   * 角色名称
+   */
+  @Column(columnDefinition = "varchar(64) NOT NULL COMMENT '角色名称'")
   private String name;
 
+  /**
+   * 角色描述
+   */
+  @Column(columnDefinition = "varchar(256) COMMENT '角色描述'")
   private String description;
 
-  @DBRef
-  private List<Privilege> privileges;
+  /**
+   * 角色拥有的权限集合
+   */
+  @ManyToMany(fetch = FetchType.EAGER)
+  private Set<Privilege> privileges;
 
   public Role(String name, String description) {
     this.name = name;

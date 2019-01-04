@@ -7,11 +7,12 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import top.lemna.user.UserTestApplication;
 import top.lemna.user.persistence.entity.Privilege;
 import top.lemna.user.persistence.service.PrivilegeService;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes=UserTestApplication.class)
 // @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class PrivilegeServiceTest {
 
@@ -23,7 +24,8 @@ public class PrivilegeServiceTest {
 
   @Before
   public void setup() {
-//    privilege = new Privilege("增加", "PRIVILEGE_ADMIN_READ", "description for privilege admin read");
+    // privilege = new Privilege("增加", "PRIVILEGE_ADMIN_READ", "description for privilege admin
+    // read");
     privilege = new Privilege("查看", "PRIVILEGE_USER_READ", "description for privilege user read");
   }
 
@@ -33,7 +35,11 @@ public class PrivilegeServiceTest {
   }
 
   @Test
-  public void testInsert() {
+  public void testInsert() {    
+    privilege = new Privilege("查看", "MODULE_PRIVILEGE_READ", "测试模块1查看权限");
+    privilegeService.save(privilege);
+    
+    privilege = new Privilege("增加", "MODULE_PRIVILEGE_ADD", "测试模块1新增权限");
     privilegeService.save(privilege);
   }
 

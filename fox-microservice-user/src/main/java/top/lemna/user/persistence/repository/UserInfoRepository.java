@@ -2,11 +2,10 @@ package top.lemna.user.persistence.repository;
 
 
 import org.springframework.stereotype.Repository;
-import top.lemna.user.persistence.entity.Privilege;
+import top.lemna.user.persistence.entity.UserInfo;
 import top.lemna.user.persistence.repository.base.BaseRepository;
 
 @Repository
-public interface PrivilegeRepository extends BaseRepository<Privilege, Long> {
+public interface UserInfoRepository extends BaseRepository<UserInfo, Long> {
 
-  Privilege findByOperation(String operation);
 }

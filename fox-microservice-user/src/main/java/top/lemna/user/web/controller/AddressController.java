@@ -26,8 +26,8 @@ public class AddressController {
   @GetMapping(path = "{userNo}/address/{addressNo}")
   public Address pay(@PathVariable Long userNo, @PathVariable Long addressNo) {
     log.debug("GET 地址 userNo:{}, addressNo:{}", userNo, addressNo);
-    Address address = addressBookService.findByUserNoAndAddressNo(userNo, addressNo);
-    return address;
+//    Address address = addressBookService.findByUserNoAndAddressNo(userNo, addressNo);
+    return null;
   }
 
   /*

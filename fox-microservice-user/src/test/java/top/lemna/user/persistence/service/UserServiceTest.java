@@ -3,9 +3,9 @@ package top.lemna.user.persistence.service;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,15 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import lombok.extern.slf4j.Slf4j;
+import top.lemna.user.UserTestApplication;
 import top.lemna.user.persistence.entity.Role;
 import top.lemna.user.persistence.entity.User;
-import top.lemna.user.persistence.service.RoleService;
-import top.lemna.user.persistence.service.UserService;
 import top.lemna.user.persistence.service.dto.UserSignupDto;
 
 @Slf4j
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes=UserTestApplication.class)
 public class UserServiceTest {
 
   private UserSignupDto dto;
@@ -39,6 +38,14 @@ public class UserServiceTest {
   }
 
   @Test
+  public void testSave() {
+    User user = new User("13800138000", "123456");
+    userService.save(user);
+    assertThat(user.getId(), notNullValue());
+  }
+
+  
+  @Test
   public void testSignup() {
     User user = userService.signup(dto);
 
@@ -48,10 +55,10 @@ public class UserServiceTest {
 
   @Test
   public void testFindByUsername() {
-    Optional<User> optional = userService.findByUsername("user");
-    Optional<Role> role = roleService.findByName("ROLE_USER");
+    Optional<User> optional = userService.findByUsername("13800138000");
+    Optional<Role> role = roleService.findByName("普通用户");
     User user = optional.get();
-    List<Role> roles = new ArrayList<>();
+    Set<Role> roles = new HashSet<>();
     roles.add(role.get());
     user.setRoles(roles);
     userService.save(user);

@@ -2,22 +2,21 @@ package top.lemna.user.persistence.service;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import top.lemna.user.UserTestApplication;
 import top.lemna.user.persistence.entity.Privilege;
 import top.lemna.user.persistence.entity.Role;
-import top.lemna.user.persistence.service.PrivilegeService;
-import top.lemna.user.persistence.service.RoleService;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes=UserTestApplication.class)
 public class RoleServiceTest {
 
   @Autowired
@@ -30,10 +29,10 @@ public class RoleServiceTest {
 
   @Before
   public void setup() {
-    role = new Role("ROLE_USER", "description for role user");
+    role = new Role("普通用户", "普通用户角色");
 
-    List<Privilege> privileges = new ArrayList<Privilege>();
-    Privilege privilege = privilegeService.findByOperation("PRIVILEGE_USER_READ");
+    Set<Privilege> privileges = new HashSet<Privilege>();
+    Privilege privilege = privilegeService.findByOperation("MODULE_PRIVILEGE_READ");
     privileges.add(privilege);
     role.setPrivileges(privileges);
   }

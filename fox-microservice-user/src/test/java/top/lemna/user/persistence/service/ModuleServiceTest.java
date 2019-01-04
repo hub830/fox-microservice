@@ -1,17 +1,16 @@
 package top.lemna.user.persistence.service;
 
 import static org.junit.Assert.fail;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import top.lemna.user.persistence.entity.Module;
 import top.lemna.user.persistence.entity.Privilege;
-import top.lemna.user.persistence.service.ModuleService;
+import top.lemna.user.persistence.entity.PrivilegeModule;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -21,14 +20,14 @@ public class ModuleServiceTest {
   @Autowired
   private ModuleService moduleService;
 
-  private Module module;
+  private PrivilegeModule module;
 
-  private List<Privilege> privileges;
+  private Set<Privilege> privileges;
 
   @Before
   public void setup() {
-    module = new Module("用户管理", "用户创建、授权");
-    privileges = new ArrayList<>();
+    module = new PrivilegeModule("用户管理", "用户创建、授权");
+    privileges = new HashSet<>();
     Privilege admin =
         new Privilege("增加", "PRIVILEGE_ADMIN_READ", "description for privilege admin read");
     privileges.add(admin);
