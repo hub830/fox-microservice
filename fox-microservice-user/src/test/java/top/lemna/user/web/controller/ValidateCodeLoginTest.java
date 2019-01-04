@@ -61,7 +61,7 @@ public class ValidateCodeLoginTest {
     headers.add("deviceId", "007");
     headers.add("Authorization", "Basic Zm94OmZveHNlY3JldA=="); // clientId:clientSecret Base64编码
     MultiValueMap<String, String> param = new LinkedMultiValueMap<String, String>();
-    param.add("username", "admin");
+    param.add("username", "13800138000");
     param.add("password", "123456");
     param.add("imageCode", "1111");
 

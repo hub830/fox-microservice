@@ -60,7 +60,7 @@ public class User extends IdEntity {
   /**
    * 角色
    */
-  @ManyToMany(fetch = FetchType.LAZY)
+  @ManyToMany(fetch = FetchType.EAGER)
   private Set<Role> roles;
 
   @OneToOne(mappedBy = "user")

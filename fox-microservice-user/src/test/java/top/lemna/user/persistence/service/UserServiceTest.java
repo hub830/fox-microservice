@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import lombok.extern.slf4j.Slf4j;
 import top.lemna.user.UserTestApplication;
@@ -20,15 +21,18 @@ import top.lemna.user.persistence.service.dto.UserSignupDto;
 
 @Slf4j
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=UserTestApplication.class)
+@SpringBootTest(classes = UserTestApplication.class)
 public class UserServiceTest {
 
   private UserSignupDto dto;
-  
+
 
   @Autowired
   UserService userService;
-  
+
+  @Autowired
+  private PasswordEncoder passwordEncoder;
+
   @Autowired
   private RoleService roleService;
 
@@ -39,12 +43,13 @@ public class UserServiceTest {
 
   @Test
   public void testSave() {
-    User user = new User("13800138000", "123456");
+    String password = passwordEncoder.encode("123456");
+    User user = new User("13800138000", password);
     userService.save(user);
     assertThat(user.getId(), notNullValue());
   }
 
-  
+
   @Test
   public void testSignup() {
     User user = userService.signup(dto);
