@@ -1,6 +1,6 @@
 package top.lemna.product.persistence.entity;
 
-import java.util.List;
+import java.util.Set;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -74,23 +74,21 @@ public class Product extends AbstractDocument {
   private Integer stock;
 
   @NotNull
-  private List<ProductProperty> properties;
+  private Set<ProductProperties> properties;
   /**
-   * 运营商
+   * 运营商、品牌
    */
   @NotNull
   @DBRef
-  private ProductCarrier carrier;
+  private Brand brand;
 
   @NotNull
   @DBRef
-  private ProductCategory category;
+  private Category category;
   /**
    * 产品状态
    */
   @NotNull
   private ProductStatus status;
-
-
 
 }

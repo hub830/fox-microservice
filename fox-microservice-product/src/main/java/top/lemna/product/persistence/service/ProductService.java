@@ -15,8 +15,8 @@ import top.lemna.product.exception.ProductAlreadyExistException;
 import top.lemna.product.exception.ProductNotExistException;
 import top.lemna.product.exception.ProductStockNotEnoughException;
 import top.lemna.product.persistence.entity.Product;
-import top.lemna.product.persistence.entity.ProductCarrier;
-import top.lemna.product.persistence.entity.ProductCategory;
+import top.lemna.product.persistence.entity.Brand;
+import top.lemna.product.persistence.entity.Category;
 import top.lemna.product.persistence.repository.ProductRepository;
 import top.lemna.product.persistence.service.base.BaseService;
 import top.lemna.product.web.command.ProductCommand;
@@ -59,7 +59,7 @@ public class ProductService extends BaseService<Product> {
         .productNo(command.getProductNo())//
         .price(0)//
         .stock(0)//
-        .carrier(command.getCarrier())//
+        .brand(command.getBrand())//
         .category(command.getCategory())//
         .properties(command.getProperties())//
         .brief(command.getBrief())//
@@ -107,7 +107,7 @@ public class ProductService extends BaseService<Product> {
    * @param category 分类
    * @return
    */
-  public Product find4Hf(String areaNo, ProductCarrier carrier, ProductCategory category) {
+  public Product find4Hf(String areaNo, Brand carrier, Category category) {
 
     String regex = "^" + areaNo.substring(0, 2) + "\\d{4}";
     Criteria c_category = Criteria.where("category").is(category);

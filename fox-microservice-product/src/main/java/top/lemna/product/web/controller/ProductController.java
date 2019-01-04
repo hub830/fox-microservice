@@ -1,7 +1,6 @@
 package top.lemna.product.web.controller;
 
 import java.math.BigInteger;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,16 +20,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.querydsl.core.types.Predicate;
 import top.lemna.core.validation.group.Add;
+import top.lemna.product.persistence.entity.Brand;
+import top.lemna.product.persistence.entity.Category;
 import top.lemna.product.persistence.entity.Product;
-import top.lemna.product.persistence.entity.ProductCarrier;
-import top.lemna.product.persistence.entity.ProductCategory;
-import top.lemna.product.persistence.service.ProductCarrierService;
+import top.lemna.product.persistence.service.BrandService;
 import top.lemna.product.persistence.service.ProductCategoryService;
 import top.lemna.product.persistence.service.ProductService;
-import top.lemna.product.web.command.BatchOperate;
-import top.lemna.product.web.command.OperateMethod;
 import top.lemna.product.web.command.ProductCommand;
-import top.lemna.product.web.command.validation.group.Stock;
 
 @RestController
 @RequestMapping("product")
@@ -40,7 +36,7 @@ public class ProductController {
   private ProductService service;
 
   @Autowired
-  private ProductCarrierService productCarrierService;
+  private BrandService brandService;
 
   @Autowired
   private ProductCategoryService productCategoryService;
@@ -89,9 +85,9 @@ public class ProductController {
 
   @GetMapping("hf")
   public ResponseEntity<?> findHfProduct(String areaNo, String carrierName) {
-    ProductCarrier carrier = productCarrierService.findByName(carrierName);
-    ProductCategory category = productCategoryService.findByName("话费");
-    Product product = service.find4Hf(areaNo, carrier, category);
+    Brand brand = brandService.findByName(carrierName);
+    Category category = productCategoryService.findByName("话费");
+    Product product = service.find4Hf(areaNo, brand, category);
     return new ResponseEntity<Product>(product, HttpStatus.OK);
   }
 

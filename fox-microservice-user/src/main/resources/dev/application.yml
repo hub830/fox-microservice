@@ -25,7 +25,7 @@ fox:
       clients[0]:
         clientId: fox
         clientSecret: foxsecret
-        accessTokenValidateSeconds: 3600
+        accessTokenValidateSeconds: 36000000
         
 eureka:
   client:

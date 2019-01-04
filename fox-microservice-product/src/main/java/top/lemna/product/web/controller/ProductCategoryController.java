@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.querydsl.core.types.Predicate;
-import top.lemna.product.persistence.entity.ProductCategory;
+import top.lemna.product.persistence.entity.Category;
 import top.lemna.product.persistence.service.ProductCategoryService;
 import top.lemna.product.web.command.ProductCategoryCommand;
 
@@ -34,32 +34,32 @@ public class ProductCategoryController {
 
   @GetMapping(value = "/{id}")
   public ResponseEntity<?> get(@PathVariable("id") BigInteger id) {
-    ProductCategory category = service.findById(id);
-    return new ResponseEntity<ProductCategory>(category, HttpStatus.OK);
+    Category category = service.findById(id);
+    return new ResponseEntity<Category>(category, HttpStatus.OK);
   }
 
   @GetMapping
   public ResponseEntity<Page<?>> get(
-      @QuerydslPredicate(root = ProductCategory.class) Predicate predicate, Pageable pageable,
+      @QuerydslPredicate(root = Category.class) Predicate predicate, Pageable pageable,
       @RequestParam MultiValueMap<String, String> parameters) {
-    Page<ProductCategory> page = service.findAll(predicate, pageable);
+    Page<Category> page = service.findAll(predicate, pageable);
     return new ResponseEntity<Page<?>>(page, HttpStatus.OK);
   }
 
   @PostMapping
   public ResponseEntity<?> post(
       @RequestBody @Validated(value = {Add.class}) ProductCategoryCommand command) {
-    ProductCategory category =
+    Category category =
         service.create(command.getName(), command.getDescribe(), command.getParentId(), command.getProperties());
-    return new ResponseEntity<ProductCategory>(category, HttpStatus.OK);
+    return new ResponseEntity<Category>(category, HttpStatus.OK);
   }
 
   @PutMapping(value = "/{id}")
   public ResponseEntity<?> put(@PathVariable("id") BigInteger id,
       @RequestBody @Validated ProductCategoryCommand command) {
-    ProductCategory category =
+    Category category =
         service.update(id, command.getName(), command.getDescribe(), command.getParentId());
-    return new ResponseEntity<ProductCategory>(category, HttpStatus.OK);
+    return new ResponseEntity<Category>(category, HttpStatus.OK);
   }
 
   @DeleteMapping(value = "/{id}")

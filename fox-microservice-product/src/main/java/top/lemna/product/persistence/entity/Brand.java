@@ -8,7 +8,7 @@ import lombok.ToString;
 import top.lemna.product.persistence.entity.base.AbstractDocument;
 
 /**
- * 产品运营商表
+ * 产品品牌表
  * 
  * @author toyota
  *
@@ -17,14 +17,14 @@ import top.lemna.product.persistence.entity.base.AbstractDocument;
 @Data
 @ToString
 @EqualsAndHashCode(callSuper = true)
-public class ProductCarrier extends AbstractDocument {
+public class Brand extends AbstractDocument {
 
   @Indexed(unique = true)
   private String name;
   
   private String describe;
 
-  public ProductCarrier(String name, String describe) {
+  public Brand(String name, String describe) {
     super();
     this.name = name;
     this.describe = describe;

@@ -9,17 +9,19 @@ import lombok.Data;
  *
  */
 @Data
-public class ProductProperty {
+public class ProductProperties {
 
   public String propertyName;
 
+  /**
+   * 属性名，来源于CategoryProperties的 options
+   */
   public String optionName;
 
-  public ProductProperty(String propertyName, String optionName) {
+  public ProductProperties(String propertyName, String optionName) {
     super();
     this.propertyName = propertyName;
     this.optionName = optionName;
   }
-  
 
 }

@@ -4,8 +4,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.lemna.product.exception.ProductCarrierNotExistException;
-import top.lemna.product.persistence.entity.ProductCarrier;
-import top.lemna.product.persistence.repository.ProductCarrierRepository;
+import top.lemna.product.persistence.entity.Brand;
+import top.lemna.product.persistence.repository.BrandRepository;
 import top.lemna.product.persistence.service.base.BaseService;
 
 /**
@@ -15,14 +15,14 @@ import top.lemna.product.persistence.service.base.BaseService;
  * 
  */
 @Service
-public class ProductCarrierService extends BaseService<ProductCarrier> {
+public class BrandService extends BaseService<Brand> {
 
   @Autowired
-  private ProductCarrierRepository repository;
+  private BrandRepository repository;
 
-  public ProductCarrier findByName(String name)
+  public Brand findByName(String name)
   {
-    Optional<ProductCarrier> optional = repository.findByName(name);
+    Optional<Brand> optional = repository.findByName(name);
     return optional.orElseThrow(() -> new ProductCarrierNotExistException(name)); 
   }
 }

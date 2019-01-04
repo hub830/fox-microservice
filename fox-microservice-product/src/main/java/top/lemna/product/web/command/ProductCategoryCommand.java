@@ -1,14 +1,14 @@
 
 package top.lemna.product.web.command;
 
-import java.util.List;
+import java.util.Set;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import top.lemna.core.constraint.commons.LongSn;
 import top.lemna.core.validation.group.Add;
-import top.lemna.product.persistence.entity.ProductCategoryProperty;
+import top.lemna.product.persistence.entity.CategoryProperties;
 
 /**
  * 交易
@@ -33,5 +33,5 @@ public class ProductCategoryCommand {
   @LongSn
   private Long parentId;
 
-  private List<ProductCategoryProperty> properties;
+  private Set<CategoryProperties> properties;
 }

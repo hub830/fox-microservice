@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import top.lemna.product.persistence.service.ProductCarrierService;
+import top.lemna.product.persistence.service.BrandService;
 
 @RestController
 @RequestMapping("product/carrier")
 public class ProductCarrierController {
 
   @Autowired
-  private ProductCarrierService service;
+  private BrandService service;
 
 
 

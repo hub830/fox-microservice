@@ -45,6 +45,15 @@ _imageCode_ 验证码
 _deviceid_ 发送请求的设备ID，由客户端生成，同一设备多次请求设备ID相同，不同设备之间设备ID不能重复
 _authorization_ clientId:clientSecret Base64编码 由后端提供
 # 配置
+客户端ID及客户端密钥配置
+
+    fox:
+      security:
+        oauth2:
+          clients[0]:
+            clientId: fox
+            clientSecret: foxsecret
+            accessTokenValidateSeconds: 3600000000
 
 # 部署
 ## 发布到docker仓库并启动

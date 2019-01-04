@@ -1,6 +1,6 @@
 package top.lemna.product.persistence.entity;
 
-import java.util.List;
+import java.util.Set;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
@@ -18,7 +18,7 @@ import top.lemna.product.persistence.entity.base.AbstractDocument;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString
-public class ProductCategory extends AbstractDocument {
+public class Category extends AbstractDocument {
 
 
   /**
@@ -38,10 +38,10 @@ public class ProductCategory extends AbstractDocument {
   private Long parentId;
 
 
-  private List<ProductCategoryProperty> properties;
+  private Set<CategoryProperties> properties;
 
 
-  public ProductCategory(String name, Long parentId, List<ProductCategoryProperty> properties) {
+  public Category(String name, Long parentId, Set<CategoryProperties> properties) {
     super();
     this.name = name;
     this.parentId = parentId;
