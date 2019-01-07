@@ -3,20 +3,16 @@ package top.lemna.product.web.controller;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import lombok.extern.slf4j.Slf4j;
 import top.lemna.product.web.command.OrderCommand;
 import top.lemna.product.web.command.OrderItemCommand;
-import top.lemna.product.web.vo.ShoppingCartVo;
 
 @Slf4j
 @RunWith(SpringRunner.class)
@@ -41,7 +37,7 @@ public class ProductStockControllerTest {
 //    command = new OrderCommand(items,2);
   }
 
-  @Test
+/*  @Test
   public void testStock() {
 
     HttpEntity<OrderCommand> entity = new HttpEntity<OrderCommand>(command, requestHeaders);
@@ -49,6 +45,6 @@ public class ProductStockControllerTest {
     ResponseEntity<ShoppingCartVo> responseEntity = restTemplate.postForEntity("/product/products/stock", entity, ShoppingCartVo.class);
     ShoppingCartVo shoppingCartVo = responseEntity.getBody();
     log.info("----------------- shoppingCartVo:{}",shoppingCartVo);
-  }
+  }*/
 
 }

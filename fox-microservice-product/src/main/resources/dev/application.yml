@@ -1,7 +1,7 @@
 server:
   port: 7003
-  servlet:
-    context-path: /aaa
+#  servlet:
+#    context-path: /product
 spring:
   application:
     name: hops-microservice-product
