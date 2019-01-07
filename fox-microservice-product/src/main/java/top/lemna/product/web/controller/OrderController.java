@@ -31,7 +31,8 @@ public class OrderController {
    * @param command
    * @return
    */
-  @PostMapping(value = "sale", consumes = "application/json", produces = "application/json")
+//  @PostMapping(value = "sale", consumes = "application/json", produces = "application/json")
+  @PostMapping(value = "sale")
   public Order sale(@RequestBody @Validated OrderCommand orderCommand) {
     log.info("产品销售 orderCommand:{}", orderCommand);
     Order cartVo = service.sale(orderCommand);

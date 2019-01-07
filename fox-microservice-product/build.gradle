@@ -6,7 +6,7 @@ dependencies {
   runtime('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
   compile('org.springframework.boot:spring-boot-starter-web')
   compile('top.lemna:fox-microservice-core:0.0.6-SNAPSHOT')
-//  compile('top.lemna:fox-security-oauth-resource:0.0.5-SNAPSHOT')
+  compile('top.lemna:fox-security-oauth-resource:0.0.5-SNAPSHOT')
   compile("org.springframework.boot:spring-boot-starter-data-mongodb")
   compile('top.lemna:fox-microservice-uid-generator:0.0.12-SNAPSHOT') {
     exclude group: 'org.slf4j'

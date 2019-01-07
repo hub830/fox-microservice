@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.aggregation.ArithmeticOperators.Add
 import org.springframework.data.querydsl.binding.QuerydslPredicate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.MultiValueMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -39,22 +40,28 @@ public class CategoryController {
   }
 
   @GetMapping
-  public ResponseEntity<Page<?>> get(
-      @QuerydslPredicate(root = Category.class) Predicate predicate, Pageable pageable,
-      @RequestParam MultiValueMap<String, String> parameters) {
+  public ResponseEntity<Page<?>> get(@QuerydslPredicate(root = Category.class) Predicate predicate,
+      Pageable pageable, @RequestParam MultiValueMap<String, String> parameters) {
     Page<Category> page = service.findAll(predicate, pageable);
     return new ResponseEntity<Page<?>>(page, HttpStatus.OK);
   }
 
   @PostMapping
+  @PreAuthorize("hasAuthority('PRIVILEGE_PRODUCT_CATEGORY_ADD')")
   public ResponseEntity<?> post(
-      @RequestBody @Validated(value = {Add.class}) ProductCategoryCommand command) {
-    Category category =
-        service.create(command.getName(), command.getDescribe(), command.getParentId(), command.getProperties());
+      @RequestBody @Validated(value = {Add.class}) ProductCategoryCommand command//
+  ) {
+    Category category = service.create(//
+        command.getName(), //
+        command.getDescribe(), //
+        command.getParentId(), //
+        command.getProperties()//
+    );
     return new ResponseEntity<Category>(category, HttpStatus.OK);
   }
 
   @PutMapping(value = "/{id}")
+  @PreAuthorize("hasAuthority('PRIVILEGE_PRODUCT_CATEGORY_UPDATE')")
   public ResponseEntity<?> put(@PathVariable("id") BigInteger id,
       @RequestBody @Validated ProductCategoryCommand command) {
     Category category =
@@ -63,6 +70,7 @@ public class CategoryController {
   }
 
   @DeleteMapping(value = "/{id}")
+  @PreAuthorize("hasAuthority('PRIVILEGE_PRODUCT_CATEGORY_DEL')")
   public ResponseEntity<Void> del(@PathVariable("id") BigInteger id) {
     service.delete(id);
     return new ResponseEntity<Void>(HttpStatus.OK);
