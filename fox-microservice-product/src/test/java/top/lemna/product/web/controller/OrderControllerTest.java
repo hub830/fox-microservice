@@ -61,7 +61,7 @@ public class OrderControllerTest {
     HttpEntity<String> entity = new HttpEntity<String>(JSON.toJSONString(command), headers);
 
     ResponseEntity<String> responseEntity =
-        restTemplate.postForEntity(baseUrl + "/order/sale", entity, String.class);
+        restTemplate.postForEntity("/order/sale", entity, String.class);
     // Order order = responseEntity.getBody();
     log.info("-----------------请求完成，返回 order:{}", responseEntity);
 
