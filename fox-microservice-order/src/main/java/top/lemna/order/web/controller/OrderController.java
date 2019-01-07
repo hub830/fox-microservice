@@ -28,7 +28,7 @@ public class OrderController {
   @PostMapping(consumes = "application/json", produces = "application/json")
   public void place(@RequestBody @Valid OrderPlaceDto command, Authentication user) {
     log.info("------- 下单 command:{} user:{}", command, user);
-    // orderService.place(userNo, userName, dto);
+//     orderService.place(userNo, userName, dto);
   }
 
   @PostMapping(path = "pay")

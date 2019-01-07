@@ -7,12 +7,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import top.lemna.user.UserTestApplication;
+import top.lemna.user.TestUserApplication;
 import top.lemna.user.persistence.entity.Privilege;
-import top.lemna.user.persistence.service.PrivilegeService;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=UserTestApplication.class)
+@SpringBootTest(classes=TestUserApplication.class)
 // @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class PrivilegeServiceTest {
 

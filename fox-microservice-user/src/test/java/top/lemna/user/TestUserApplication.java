@@ -15,7 +15,7 @@ import top.lemna.user.web.controller.ImageCodeGenerator;
 @SpringBootApplication
 @EnableFeignClients
 @Configuration
-public class UserTestApplication {
+public class TestUserApplication {
 
   @Autowired
   private SecurityProperties securityProperties;

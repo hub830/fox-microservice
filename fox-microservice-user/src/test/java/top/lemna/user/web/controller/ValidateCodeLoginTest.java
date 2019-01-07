@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import lombok.extern.slf4j.Slf4j;
-import top.lemna.user.UserTestApplication;
+import top.lemna.user.TestUserApplication;
 
 /**
  * Oauth 密码登录模式
@@ -25,7 +25,7 @@ import top.lemna.user.UserTestApplication;
  */
 @Slf4j
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = UserTestApplication.class)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = TestUserApplication.class)
 public class ValidateCodeLoginTest {
 
   @Autowired

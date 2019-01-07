@@ -14,14 +14,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import lombok.extern.slf4j.Slf4j;
-import top.lemna.user.UserTestApplication;
+import top.lemna.user.TestUserApplication;
 import top.lemna.user.persistence.entity.Role;
 import top.lemna.user.persistence.entity.User;
 import top.lemna.user.persistence.service.dto.UserSignupDto;
 
 @Slf4j
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = UserTestApplication.class)
+@SpringBootTest(classes = TestUserApplication.class)
 public class UserServiceTest {
 
   private UserSignupDto dto;
