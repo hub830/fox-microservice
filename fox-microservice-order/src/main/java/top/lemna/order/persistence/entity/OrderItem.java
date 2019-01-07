@@ -19,7 +19,7 @@ public class OrderItem {
 	/**
 	 * 商品编号 
 	 */
-	private String productId;
+	private String productNo;
 	
 	/**
 	 * 商品规格 
@@ -34,7 +34,7 @@ public class OrderItem {
 	/**
 	 * 数量
 	 */
-	private int quantity;
+	private int num;
 	
 	/**
 	 * 总价

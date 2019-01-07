@@ -1,6 +1,5 @@
 package top.lemna.product.persistence.service;
 
-import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Before;
@@ -31,8 +30,7 @@ public class OrderServiceTest {
     String userName = "test";
     List<OrderItemCommand> items = new ArrayList<OrderItemCommand>();
     items.add(new OrderItemCommand("POS|M60|WRITE", 1));
-    Integer totalNum = 2;
-    command = new OrderCommand(orderNo, userNo, userName, items, totalNum);
+    command = new OrderCommand(orderNo, userNo, userName, items);
   }
 
   @Test

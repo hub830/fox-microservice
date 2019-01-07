@@ -1,4 +1,4 @@
-package top.lemna.product.web.controller;
+package top.lemna.order.web.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +17,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
-import top.lemna.product.web.command.OrderCommand;
-import top.lemna.product.web.command.OrderItemCommand;
+import top.lemna.core.enums.order.DeliveryMethod;
+import top.lemna.core.enums.order.PaymentType;
+import top.lemna.order.persistence.service.dto.OrderItemDto;
+import top.lemna.order.persistence.service.dto.OrderPlaceDto;
 
 @Slf4j
 @RunWith(SpringRunner.class)
@@ -29,7 +31,9 @@ public class OrderControllerTest {
   private int port;
 
   @Autowired
-  private TestRestTemplate restTemplate;
+  private TestRestTemplate template;
+
+  private OrderPlaceDto command;
 
   /**
    * TOKEN可以通过USER模块的登录测试用例获得
@@ -39,8 +43,6 @@ public class OrderControllerTest {
 
   private HttpHeaders headers;
 
-  private OrderCommand command;
-
   @Before
   public void setup() {
 
@@ -49,26 +51,26 @@ public class OrderControllerTest {
     headers.add("Authorization", "bearer " + token);// 登录
     headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
 
-    Long orderNo = 100001L;
-    Long userNo = 100001L;
-    String userName = "test";
-    List<OrderItemCommand> items = new ArrayList<OrderItemCommand>();
-    items.add(new OrderItemCommand("POS|M60|WRITE", 1));
-    command = new OrderCommand(orderNo, userNo, userName, items);
+    PaymentType paymentType = PaymentType.CASH_ON_DELIVERY;//
+    DeliveryMethod deliveryMethod = DeliveryMethod.NORMAL_EXPRESS; //
+    Long addresseeId = 9L; //
+    List<OrderItemDto> items = new ArrayList<>();//
+    items.add(new OrderItemDto("POS|M60|WRITE", 1));
+
+    command = new OrderPlaceDto(paymentType, deliveryMethod, addresseeId, items);
+
   }
 
-
   @Test
-  public void testSale() {
-
-    // final String baseUrl = "http://localhost:" + port + "";
-
+  public void testPlace() {
     HttpEntity<String> entity = new HttpEntity<String>(JSON.toJSONString(command), headers);
 
     ResponseEntity<String> responseEntity =
-        restTemplate.postForEntity("/order/sale", entity, String.class);
+        template.postForEntity("/order", entity, String.class);
     // Order order = responseEntity.getBody();
+    log.info("-----------------------------------------------------------------------");
     log.info("-----------------请求完成，返回 order:{}", responseEntity);
+    log.info("-----------------------------------------------------------------------");
 
   }
 

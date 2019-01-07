@@ -1,13 +1,8 @@
 spring:
-  datasource:
-#    driver-class-name: org.hsqldb.jdbcDriver
-#    url:  jdbc:hsqldb:mem:mydatabase
-#    username: sa
-#    password: sa
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.10.10/hops_pay?useUnicode=true&characterEncoding=UTF8
-    username: root
-    password: 123456
+  data:
+    mongodb:
+      uri: mongodb://foxorder:fox123456@192.168.10.10:27017/foxorder?authMechanism=SCRAM-SHA-1
+
   jpa:
     generate-ddl: true
     show-sql: true

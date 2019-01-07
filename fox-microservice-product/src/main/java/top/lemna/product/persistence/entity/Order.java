@@ -36,12 +36,12 @@ public class Order extends AbstractDocument {
   /**
    * 所有产品金额合计
    */
-  private Integer totalMount;
+  private Integer amount;
 
   /**
    * 购买商品总数量
    */
-  private Integer totalNumber;
+  private Integer num;
 
   /**
    * 状态
@@ -58,12 +58,12 @@ public class Order extends AbstractDocument {
     this.orderNo = orderNo;
     this.userNo = userNo;
     this.userName = userName;
-    this.totalMount = 0;
-    this.totalNumber = 0;
+    this.amount = 0;
+    this.num = 0;
     this.items = items;
     for (OrderItem item : items) {
-      this.totalMount += item.getAmount();
-      this.totalNumber += item.getNum();
+      this.amount += item.getAmount();
+      this.num += item.getNum();
     }
     this.status = OrderStatus.COMPLETE;
   }
