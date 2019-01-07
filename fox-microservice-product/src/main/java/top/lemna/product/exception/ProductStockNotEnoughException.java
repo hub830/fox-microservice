@@ -1,15 +1,13 @@
 package top.lemna.product.exception;
 
 import lombok.Getter;
-import top.lemna.core.utils.StringFormatUtil;
 
 /**
- * 产品库存不足异常
- * 
+ * 产品订单创建异常
  * @author mux
  *
  */
-public class ProductStockNotEnoughException extends RuntimeException {
+public class ProductStockNotEnoughException extends ProductOrderCreateEnoughException {
 
   private static final long serialVersionUID = 1L;
 
@@ -17,7 +15,7 @@ public class ProductStockNotEnoughException extends RuntimeException {
   private String productNo;
 
   public ProductStockNotEnoughException(String productNo) {
-    super(StringFormatUtil.format("数据库中不存在对应的产品 productNo:{}", productNo));
+    super(messageFormat("数据库中不存在对应的产品 productNo:{}", productNo));
     this.productNo = productNo;
   }
 }

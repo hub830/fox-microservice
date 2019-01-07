@@ -24,7 +24,7 @@ public class ProductServiceTest {
   @Autowired
   private ProductService productService;
   @Autowired
-  private ProductCategoryService categoryService;
+  private CategoryService categoryService;
   @Autowired
   private BrandService brandService;
 

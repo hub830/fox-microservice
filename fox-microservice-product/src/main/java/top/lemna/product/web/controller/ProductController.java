@@ -24,7 +24,7 @@ import top.lemna.product.persistence.entity.Brand;
 import top.lemna.product.persistence.entity.Category;
 import top.lemna.product.persistence.entity.Product;
 import top.lemna.product.persistence.service.BrandService;
-import top.lemna.product.persistence.service.ProductCategoryService;
+import top.lemna.product.persistence.service.CategoryService;
 import top.lemna.product.persistence.service.ProductService;
 import top.lemna.product.web.command.ProductCommand;
 
@@ -39,7 +39,7 @@ public class ProductController {
   private BrandService brandService;
 
   @Autowired
-  private ProductCategoryService productCategoryService;
+  private CategoryService productCategoryService;
 
 
   @GetMapping(value = "product/{id}")

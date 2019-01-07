@@ -17,26 +17,26 @@ import lombok.ToString;
  */
 @Data
 @ToString
-public class ShoppingCartItemCommand {
-
+public class OrderItemCommand {
+  
   @NotBlank
   @Size(min = 8, max = 64)
   private String productNo;
 
   // 采购数量
   @NotNull
-  @Min(0)
+  @Min(1)
   @Max(9999999)
-  private Integer number;
+  private Integer num;
 
-  public ShoppingCartItemCommand() {
+  public OrderItemCommand() {
     super();
   }
 
-  public ShoppingCartItemCommand(String productNo, Integer number) {
+  public OrderItemCommand(String productNo, Integer num) {
     super();
     this.productNo = productNo;
-    this.number = number;
+    this.num = num;
   }
 
 }

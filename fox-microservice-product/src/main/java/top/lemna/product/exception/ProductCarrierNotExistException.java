@@ -1,8 +1,6 @@
 package top.lemna.product.exception;
 
-import top.lemna.core.utils.StringFormatUtil;
-
-public class ProductCarrierNotExistException extends RuntimeException {
+public class ProductCarrierNotExistException extends ProductRuntimeException {
   
   public String getCarrierName() {
     return carrierName;
@@ -17,7 +15,7 @@ public class ProductCarrierNotExistException extends RuntimeException {
   private String carrierName;
 
   public ProductCarrierNotExistException(String carrierName) {
-    super(StringFormatUtil.format("数据库中不存在对应的运营商 carrierName:{}",  carrierName));
+    super(messageFormat("数据库中不存在对应的运营商 carrierName:{}",  carrierName));
     this.carrierName = carrierName;
   }
 

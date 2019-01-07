@@ -1,6 +1,5 @@
 package top.lemna.product.persistence.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +13,12 @@ import top.lemna.core.enums.product.ProductStatus;
 import top.lemna.product.exception.ProductAlreadyExistException;
 import top.lemna.product.exception.ProductNotExistException;
 import top.lemna.product.exception.ProductStockNotEnoughException;
-import top.lemna.product.persistence.entity.Product;
 import top.lemna.product.persistence.entity.Brand;
 import top.lemna.product.persistence.entity.Category;
+import top.lemna.product.persistence.entity.Product;
 import top.lemna.product.persistence.repository.ProductRepository;
 import top.lemna.product.persistence.service.base.BaseService;
 import top.lemna.product.web.command.ProductCommand;
-import top.lemna.product.web.command.ShoppingCartCommand;
-import top.lemna.product.web.command.ShoppingCartItemCommand;
-import top.lemna.product.web.vo.ShoppingCartItemVo;
-import top.lemna.product.web.vo.ShoppingCartVo;
 
 /**
  * 产品管理.
@@ -69,33 +64,21 @@ public class ProductService extends BaseService<Product> {
     return save(product);
   }
 
+
   /**
-   * 销售，用于批量减库存
+   * 销售，减库存
    * 
    * @param commands
-   * @return 减库存后的产品列表，用于给调用者计算销售价格
+   * @return 
    */
   @Transactional
-  public ShoppingCartVo sale(ShoppingCartCommand command) {
-    List<ShoppingCartItemVo> voItems = new ArrayList<ShoppingCartItemVo>();
-    List<ShoppingCartItemCommand> items = command.getItems();
-    // 所有产品金额合计
-    Integer totalMount = 0;
-    // 购买商品总数量
-    Integer totalNumber = 0;
-    for (ShoppingCartItemCommand item : items) {
-      Product product = findByProductNo(item.getProductNo());
-      if (product.getStock() < item.getNumber()) {
-        throw new ProductStockNotEnoughException(item.getProductNo());
-      }
-      product.setStock(product.getStock() - item.getNumber());
-      product = save(product);
-      ShoppingCartItemVo vo = new ShoppingCartItemVo(item.getProductNo(), item.getNumber(), product.getPrice());
-      totalMount += vo.getTotalMount();
-      totalNumber += vo.getNumber();
-      voItems.add(vo);
+  public Product sale(String productNo, Integer num) {
+    Product product = findByProductNo(productNo);
+    if (product.getStock() < num) {
+      throw new ProductStockNotEnoughException(productNo);
     }
-    return new ShoppingCartVo(voItems, totalMount, totalNumber);    
+    product.setStock(product.getStock() - num);
+    return product = save(product);
   }
 
   /**

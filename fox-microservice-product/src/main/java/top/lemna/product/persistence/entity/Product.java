@@ -57,8 +57,9 @@ public class Product extends AbstractDocument {
   @NotNull
   @Size(min = 4, max = 256)
   private String imagePath;
+  
   /**
-   * 单价
+   * 单价 单位：分
    */
   @NotNull
 //  @Digits(integer = 8, fraction = 2)

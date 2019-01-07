@@ -20,7 +20,6 @@ import top.lemna.product.persistence.entity.base.AbstractDocument;
 @ToString
 public class Category extends AbstractDocument {
 
-
   /**
    * 名称
    */

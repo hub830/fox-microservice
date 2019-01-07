@@ -15,10 +15,10 @@ import top.lemna.product.persistence.entity.CategoryProperties;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ProductCategoryServiceTest {
+public class CategoryServiceTest {
 
   @Autowired
-  private ProductCategoryService productCategoryService;
+  private CategoryService productCategoryService;
 
   private Category productCategory;
 

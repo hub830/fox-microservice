@@ -11,17 +11,34 @@ import lombok.Data;
 @Data
 public class OrderItem {
 
-	//商品名称
+	/**
+	 * 商品名称
+	 */
 	private String productName;
-	//商品编号 
+	
+	/**
+	 * 商品编号 
+	 */
 	private String productId;
-	//商品规格 
+	
+	/**
+	 * 商品规格 
+	 */
 	private String productSpec;
-	//单价
+	
+	/**
+	 * 单价
+	 */
 	private double price;
-	//数量
+	
+	/**
+	 * 数量
+	 */
 	private int quantity;
-	//总价
+	
+	/**
+	 * 总价
+	 */
 	private double amount;
 
 }

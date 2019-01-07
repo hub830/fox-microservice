@@ -21,15 +21,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.querydsl.core.types.Predicate;
 import top.lemna.product.persistence.entity.Category;
-import top.lemna.product.persistence.service.ProductCategoryService;
+import top.lemna.product.persistence.service.CategoryService;
 import top.lemna.product.web.command.ProductCategoryCommand;
 
 @RestController
 @RequestMapping("productcategory")
-public class ProductCategoryController {
+public class CategoryController {
 
   @Autowired
-  private ProductCategoryService service;
+  private CategoryService service;
 
 
   @GetMapping(value = "/{id}")

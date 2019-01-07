@@ -14,8 +14,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import lombok.extern.slf4j.Slf4j;
-import top.lemna.product.web.command.ShoppingCartCommand;
-import top.lemna.product.web.command.ShoppingCartItemCommand;
+import top.lemna.product.web.command.OrderCommand;
+import top.lemna.product.web.command.OrderItemCommand;
 import top.lemna.product.web.vo.ShoppingCartVo;
 
 @Slf4j
@@ -28,23 +28,23 @@ public class ProductStockControllerTest {
   
   private HttpHeaders requestHeaders;
   
-  private ShoppingCartCommand command;
+  private OrderCommand command;
   
   @Before
   public void setup()
   {
     requestHeaders = new HttpHeaders();
     requestHeaders.add("api-version", "1.0");
-    List<ShoppingCartItemCommand> items = new ArrayList<ShoppingCartItemCommand>();
-    ShoppingCartItemCommand item1 = new ShoppingCartItemCommand("POS|M60|WRITE",  2);
+    List<OrderItemCommand> items = new ArrayList<OrderItemCommand>();
+    OrderItemCommand item1 = new OrderItemCommand("POS|M60|WRITE",  2);
     items.add(item1);
-    command = new ShoppingCartCommand(items,2);
+//    command = new OrderCommand(items,2);
   }
 
   @Test
   public void testStock() {
 
-    HttpEntity<ShoppingCartCommand> entity = new HttpEntity<ShoppingCartCommand>(command, requestHeaders);
+    HttpEntity<OrderCommand> entity = new HttpEntity<OrderCommand>(command, requestHeaders);
         
     ResponseEntity<ShoppingCartVo> responseEntity = restTemplate.postForEntity("/product/products/stock", entity, ShoppingCartVo.class);
     ShoppingCartVo shoppingCartVo = responseEntity.getBody();

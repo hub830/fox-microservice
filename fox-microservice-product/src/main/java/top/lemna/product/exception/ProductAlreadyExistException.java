@@ -1,9 +1,8 @@
 package top.lemna.product.exception;
 
 import lombok.Getter;
-import top.lemna.core.utils.StringFormatUtil;
 
-public class ProductAlreadyExistException extends RuntimeException {
+public class ProductAlreadyExistException extends ProductRuntimeException {
 
   private static final long serialVersionUID = 1L;
   
@@ -11,7 +10,7 @@ public class ProductAlreadyExistException extends RuntimeException {
   private String productNo;
 
   public ProductAlreadyExistException(String productNo) {
-    super(StringFormatUtil.format("数据库中已经存在对应的产品 productNo:{}", productNo));
+    super(messageFormat("数据库中已经存在对应的产品 productNo:{}", productNo));
     this.productNo = productNo;
   }
 

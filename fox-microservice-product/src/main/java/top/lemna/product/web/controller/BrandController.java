@@ -11,7 +11,7 @@ import top.lemna.product.persistence.service.BrandService;
 
 @RestController
 @RequestMapping("product/carrier")
-public class ProductCarrierController {
+public class BrandController {
 
   @Autowired
   private BrandService service;

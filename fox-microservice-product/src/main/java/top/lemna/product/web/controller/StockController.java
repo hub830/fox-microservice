@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import top.lemna.product.persistence.service.ProductService;
-import top.lemna.product.web.command.ShoppingCartCommand;
+import top.lemna.product.web.command.OrderCommand;
 import top.lemna.product.web.vo.ShoppingCartVo;
 
 /**
@@ -17,7 +17,7 @@ import top.lemna.product.web.vo.ShoppingCartVo;
  */
 @RestController
 @RequestMapping("product")
-public class ProductStockController {
+public class StockController {
 
   @Autowired
   private ProductService service;
@@ -28,10 +28,10 @@ public class ProductStockController {
    * @param command
    * @return
    */
-  @PostMapping(value = "products/stock")
+/*  @PostMapping(value = "products/stock")
   public ShoppingCartVo stock(
-      @RequestBody @Validated  ShoppingCartCommand shoppingCart) {
+      @RequestBody @Validated  OrderCommand shoppingCart) {
     ShoppingCartVo cartVo = service.sale(shoppingCart);
     return cartVo;
-  }
+  }*/
 }

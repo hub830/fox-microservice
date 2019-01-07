@@ -21,7 +21,7 @@ import top.lemna.product.persistence.service.base.BaseService;
  * 
  */
 @Service
-public class ProductCategoryService extends BaseService<Category> {
+public class CategoryService extends BaseService<Category> {
 
   @Autowired
   private CategoryRepository repository;
