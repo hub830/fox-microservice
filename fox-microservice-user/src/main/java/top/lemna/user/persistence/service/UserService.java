@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import top.lemna.api.account.model.Account;
-import top.lemna.user.client.account.AccountClient;
+import top.lemna.user.feign.client.account.AccountClient;
 import top.lemna.user.persistence.entity.User;
 import top.lemna.user.persistence.entity.UserInfo;
 import top.lemna.user.persistence.repository.UserRepository;

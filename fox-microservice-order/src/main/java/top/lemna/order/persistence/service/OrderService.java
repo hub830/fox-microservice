@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import top.lemna.api.product.command.OrderCommand;
 import top.lemna.api.product.command.OrderItemCommand;
-import top.lemna.order.client.product.OrderClient;
+import top.lemna.order.feign.client.product.OrderClient;
 import top.lemna.order.persistence.entity.Order;
 import top.lemna.order.persistence.entity.Order.Builder;
 import top.lemna.order.persistence.entity.OrderAddressee;
@@ -18,7 +18,7 @@ import top.lemna.order.persistence.entity.OrderDelivery;
 import top.lemna.order.persistence.entity.OrderItem;
 import top.lemna.order.persistence.entity.OrderPayment;
 import top.lemna.order.persistence.repository.OrderRepository;
-import top.lemna.order.persistence.service.base.BaseService;
+import top.lemna.order.persistence.service.base.AbstractBaseService;
 import top.lemna.order.persistence.service.dto.OrderItemDto;
 import top.lemna.order.persistence.service.dto.OrderPlaceDto;
 
@@ -31,7 +31,7 @@ import top.lemna.order.persistence.service.dto.OrderPlaceDto;
 @Slf4j
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class OrderService extends BaseService<Order> {
+public class OrderService extends AbstractBaseService<Order> {
 
   private final OrderRepository repository;
 

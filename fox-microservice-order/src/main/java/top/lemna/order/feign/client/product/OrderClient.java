@@ -1,4 +1,4 @@
-package top.lemna.order.client.product;
+package top.lemna.order.feign.client.product;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;

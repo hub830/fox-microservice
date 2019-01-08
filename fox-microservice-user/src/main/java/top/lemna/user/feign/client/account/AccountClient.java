@@ -1,4 +1,4 @@
-package top.lemna.user.client.account;
+package top.lemna.user.feign.client.account;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;

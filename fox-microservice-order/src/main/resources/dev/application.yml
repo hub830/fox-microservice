@@ -2,7 +2,9 @@ spring:
   data:
     mongodb:
       uri: mongodb://foxorder:fox123456@192.168.10.10:27017/foxorder?authMechanism=SCRAM-SHA-1
-
-  jpa:
-    generate-ddl: true
-    show-sql: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.10:8761/eureka/
+  instance:
+    prefer-ip-address: true

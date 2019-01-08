@@ -3,6 +3,7 @@ package top.lemna.order.web.controller;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +29,7 @@ public class OrderController {
   @PostMapping(consumes = "application/json", produces = "application/json")
   public void place(@RequestBody @Valid OrderPlaceDto command, Authentication user) {
     log.info("------- 下单 command:{} user:{}", command, user);
-//     orderService.place(userNo, userName, dto);
+     orderService.place(10001L, "", command);
   }
 
   @PostMapping(path = "pay")
